@@ -17,36 +17,36 @@ public class Tutorial06Component : MonoBehaviour {
 
     // Awake is called when component is initialised
     private void Awake() {
-        Debug.Log("Awake");
+        Debug.Log("Component.Awake");
     }
 
     // Start is called before the first frame update
     private void Start() {
-        Debug.Log("Start");
+        Debug.Log("Component.Start");
     }
 
     // Update is called once per frame
     private void Update() {
-        Debug.Log("Update");
+        // Debug.Log("Component.Update");
     }
 
     // LateUpdate is called after the update
     private void LateUpdate() {
-        Debug.Log("LateUpdate");
+        // Debug.Log("Component.LateUpdate");
     }
 
     // FixedUpdate is called after fixed time
     private void FixedUpdate() {
-        Debug.Log("FixedUpdate");
+        // Debug.Log("Component.FixedUpdate");
     }
 
     // OnEnable is called when game object or component is enabled
     private void OnEnable() {
-        Debug.Log("OnEnable");
+        Debug.Log("Component.OnEnable");
     }
 
     // OnDisable is called when game object or component is disabled
     private void OnDisable() {
-        Debug.Log("OnDisable");
+        Debug.Log("Component.OnDisable");
     }
 }
