@@ -11,7 +11,7 @@ public class GameHandler : MonoBehaviour {
     [SerializeField] private Sprite whitePixel;
 
     private void Start() {
-        Debug.Log("GameHandler.Start");
+        Debug.Log("GameHandler.Start()");
         eventTriggered = false;
         gameOver = false;
         CreateBox();
@@ -19,14 +19,24 @@ public class GameHandler : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) {
             clickTime = Time.time;
-            Debug.Log("GameHandler.Update: Left mouse button pressed at " + clickTime);
+            Debug.Log("GameHandler.Update(): Left mouse button pressed at " + clickTime);
             if (eventTriggered == true && gameOver == false) {
                 float reactionTime = clickTime - eventTime;
-                Debug.Log("GameHandler.Update: Reaction time: " + reactionTime + "s");
+                Debug.Log("GameHandler.Update(): Reaction time: " + reactionTime + "s");
                 gameOver = true;
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.R)) {
+            Debug.Log("GameHandler.Update(): R pressed");
+
+            SpriteRenderer boxSpriteRenderer = boxGameObject.GetComponent<SpriteRenderer>();
+            boxSpriteRenderer.color = Color.blue;
+            eventTriggered = false;
+            gameOver = false;
+            StartCoroutine(ExampleCoroutine());
         }
     }
 
@@ -40,13 +50,13 @@ public class GameHandler : MonoBehaviour {
 
     private IEnumerator ExampleCoroutine() {
         startTime = Time.time;
-        Debug.Log("GameHandler.ExampleCoroutine: Started at " + startTime);
+        Debug.Log("GameHandler.ExampleCoroutine(): Started at " + startTime);
         yield return new WaitForSeconds(2);
 
         SpriteRenderer boxSpriteRenderer = boxGameObject.GetComponent<SpriteRenderer>();
         boxSpriteRenderer.color = Color.red;
         eventTime = Time.time;
-        Debug.Log("GameHandler.ExampleCoroutine: Event at " + eventTime);
+        Debug.Log("GameHandler.ExampleCoroutine(): Event at " + eventTime);
         eventTriggered = true;
     }
 }
