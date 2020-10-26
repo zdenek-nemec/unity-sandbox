@@ -5,21 +5,29 @@ using UnityEngine;
 public class SpaceshipMovement : MonoBehaviour {
     void Start() {
         Debug.Log("SpaceshipMovement.Start()");
+        // TODO: Move spaceship to mid-bottom
     }
 
     void Update() {
+        // Debug.Log("SpaceshipMovement.Update()");
+
+        // Movement
         if (Input.GetKey(KeyCode.W)) {
-            Debug.Log("SpaceshipMovement.Update(): W pressed");
             transform.position = transform.position + new Vector3(0, .02f, 0);
-        } else if (Input.GetKey(KeyCode.A)) {
-            Debug.Log("SpaceshipMovement.Update(): A pressed");
+        }
+        if (Input.GetKey(KeyCode.A)) {
             transform.position = transform.position + new Vector3(-.02f, 0, 0);
-        } else if (Input.GetKey(KeyCode.S)) {
-            Debug.Log("SpaceshipMovement.Update(): S pressed");
+        }
+        if (Input.GetKey(KeyCode.S)) {
             transform.position = transform.position + new Vector3(0, -.02f, 0);
-        } else if (Input.GetKey(KeyCode.D)) {
-            Debug.Log("SpaceshipMovement.Update(): D pressed");
+        }
+        if (Input.GetKey(KeyCode.D)) {
             transform.position = transform.position + new Vector3(.02f, 0, 0);
+        }
+
+        // Fire
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Debug.Log("SpaceshipMovement.Update(): Space pressed");
         }
     }
 }
