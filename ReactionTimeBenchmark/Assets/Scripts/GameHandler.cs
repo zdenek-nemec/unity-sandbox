@@ -2,26 +2,61 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameHandler : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log("GameHandler.Start(): Started");
+public class GameHandler : MonoBehaviour {
+    private GameObject boxGameObject;
+    private float startTime, eventTime, clickTime;
+    private bool eventTriggered;
+    private bool gameOver;
 
+    [SerializeField] private Sprite whitePixel;
+
+    private void Start() {
+        Debug.Log("GameHandler.Start()");
+        eventTriggered = false;
+        gameOver = false;
+        CreateBox();
+        StartCoroutine(ExampleCoroutine());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // Debug.Log("GameHandler.Update(): Started");
-
-        SpriteRenderer sprite;
-        sprite = GetComponentInChildren<SpriteRenderer>();
-        if (Input.GetKeyDown(KeyCode.C)) {
-            Debug.Log("GameHandler.Update(): C pressed");
-        sprite.color = new Color (1, 0, 0, 1);
+    private void Update() {
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) {
+            clickTime = Time.time;
+            Debug.Log("GameHandler.Update(): Left mouse button pressed at " + clickTime);
+            if (eventTriggered == true && gameOver == false) {
+                float reactionTime = clickTime - eventTime;
+                Debug.Log("GameHandler.Update(): Reaction time: " + reactionTime + "s");
+                gameOver = true;
+            }
         }
-        // Debug.Log("GameHandler.Update(): Finished");
+
+        if (Input.GetKeyDown(KeyCode.R)) {
+            Debug.Log("GameHandler.Update(): R pressed");
+
+            SpriteRenderer boxSpriteRenderer = boxGameObject.GetComponent<SpriteRenderer>();
+            boxSpriteRenderer.color = Color.blue;
+            eventTriggered = false;
+            gameOver = false;
+            StartCoroutine(ExampleCoroutine());
+        }
+    }
+
+    private void CreateBox() {
+        boxGameObject = new GameObject("Box", typeof(SpriteRenderer));
+        boxGameObject.transform.localScale = new Vector3(16f, 9f, 1f);
+        SpriteRenderer boxSpriteRenderer = boxGameObject.GetComponent<SpriteRenderer>();
+        boxSpriteRenderer.sprite = whitePixel;
+        boxSpriteRenderer.color = Color.blue;
+    }
+
+    private IEnumerator ExampleCoroutine() {
+        startTime = Time.time;
+        Debug.Log("GameHandler.ExampleCoroutine(): Started at " + startTime);
+        yield return new WaitForSeconds(2);
+
+        SpriteRenderer boxSpriteRenderer = boxGameObject.GetComponent<SpriteRenderer>();
+        boxSpriteRenderer.color = Color.red;
+        eventTime = Time.time;
+        Debug.Log("GameHandler.ExampleCoroutine(): Event at " + eventTime);
+        eventTriggered = true;
     }
 }
