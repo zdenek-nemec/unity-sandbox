@@ -11,13 +11,13 @@ public class Spaceship : MonoBehaviour {
             transform.position = transform.position + new Vector3(0, .02f, 0);
         }
         if (Input.GetKey(KeyCode.A)) {
-            transform.position = transform.position + new Vector3(-.02f, 0, 0);
+            transform.position = transform.position + new Vector3(-.1f, 0, 0);
         }
         if (Input.GetKey(KeyCode.S)) {
             transform.position = transform.position + new Vector3(0, -.02f, 0);
         }
         if (Input.GetKey(KeyCode.D)) {
-            transform.position = transform.position + new Vector3(.02f, 0, 0);
+            transform.position = transform.position + new Vector3(.1f, 0, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
