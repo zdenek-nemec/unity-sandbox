@@ -4,8 +4,10 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Spaceship : MonoBehaviour {
+    [SerializeField] private Sprite[] skins;
     [SerializeField] private Weapon[] weapons;
     [SerializeField] private float projectileSpeed = 1;
+    private int currentSkin = 0;
     private Vector3 zeroVelocity;
 
     private void Update() {
@@ -34,6 +36,11 @@ public class Spaceship : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space)) {
             Fire();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P)) {
+            currentSkin = (currentSkin + 1) % skins.GetLength(0);
+            this.GetComponent<SpriteRenderer>().sprite = skins[currentSkin];
         }
     }
 
