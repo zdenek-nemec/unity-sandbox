@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour {
-    [SerializeField] private ProjectileA projectilePrefab;
+    [SerializeField] private Projectile projectilePrefab;
     [SerializeField] private Transform transformMuzzle;
 
     public void Fire(float velocity) {
