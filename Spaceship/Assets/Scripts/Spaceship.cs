@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Spaceship : MonoBehaviour {
@@ -8,31 +6,29 @@ public class Spaceship : MonoBehaviour {
     [SerializeField] private Weapon[] weapons;
     [SerializeField] private float projectileSpeed = 1;
     private int currentSkin = 0;
-    private Vector3 zeroVelocity;
 
     private void Update() {
         Rigidbody rigidbody = GetComponent<Rigidbody>();
 
-        if (Input.GetKey(KeyCode.W)) {
-            transform.position = transform.position + new Vector3(0, .02f, 0);
+        if (Input.GetKeyDown(KeyCode.W)) {
+            rigidbody.velocity += transform.up;
+        }
+        if (Input.GetKeyDown(KeyCode.S)) {
+            rigidbody.velocity -= rigidbody.velocity * .5f;
+        }
+        if (Input.GetKeyDown(KeyCode.X)) {
+            Debug.Log("Spaceship.Update: Reset");
+            rigidbody.velocity = Vector3.zero;
+            rigidbody.angularVelocity = Vector3.zero;
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+            transform.rotation = new Quaternion(Quaternion.identity.x, Quaternion.identity.y, transform.rotation.z, transform.rotation.w);
         }
         if (Input.GetKey(KeyCode.A)) {
-            transform.position = transform.position + new Vector3(-.02f, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.S)) {
-            transform.position = transform.position + new Vector3(0, -.02f, 0);
+            transform.Rotate(0, 0, 1f);
         }
         if (Input.GetKey(KeyCode.D)) {
-            transform.position = transform.position + new Vector3(.02f, 0, 0);
+            transform.Rotate(0, 0, -1f);
         }
-
-        // if (Input.GetKeyDown(KeyCode.D)) {
-        //     zeroVelocity = rigidbody.velocity;
-        //     Vector3 velocity = transform.right * 1;
-        //     rigidbody.velocity = velocity;
-        // } else if (Input.GetKeyUp(KeyCode.D)) {
-        //     rigidbody.velocity = zeroVelocity;
-        // }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
             Fire();
