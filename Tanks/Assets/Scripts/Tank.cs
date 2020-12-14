@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Tank : MonoBehaviour {
+    [SerializeField] private Material playerMaterial;
     private bool controls = false;
     private int speedMultiplier = 1;
 
     public void AssumeControl() {
         controls = true;
+        foreach (Transform child in transform) {
+            Debug.Log("Tank.AssumeControl: Child");
+            child.GetComponent<MeshRenderer>().material = playerMaterial;
+        }
     }
 
     public void ReleaseControl() {

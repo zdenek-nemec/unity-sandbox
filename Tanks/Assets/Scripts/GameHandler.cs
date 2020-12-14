@@ -8,7 +8,7 @@ public class GameHandler : MonoBehaviour {
     private void Start() {
         Debug.Log("GameHandler.Start");
 
-        // Create tanks and randomly assign player
+        // Create tanks and randomly assign the player
         int playerTankIndex = Random.Range(0, 8);
         int index = 0;
         for (int x = -2; x <= 2; x += 2) {
