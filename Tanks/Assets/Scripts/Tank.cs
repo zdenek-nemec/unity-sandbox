@@ -3,16 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Tank : MonoBehaviour {
+    private bool controls = false;
     private int speedMultiplier = 1;
 
-    void Update() {
+    public void AssumeControl() {
+        controls = true;
+    }
+
+    public void ReleaseControl() {
+        controls = false;
+    }
+
+    private void Update() {
+        if (!controls) {
+            return;
+        }
+
         Rigidbody rigidbody = GetComponent<Rigidbody>();
 
         if (Input.GetKey(KeyCode.W)) {
-            rigidbody.velocity = transform.right * -3f * speedMultiplier;
+            rigidbody.velocity = transform.forward * 3f * speedMultiplier;
         }
         if (Input.GetKey(KeyCode.S)) {
-            rigidbody.velocity = transform.right * 3f;
+            rigidbody.velocity = transform.forward * -3f;
         }
 
         if (Input.GetKey(KeyCode.A)) {

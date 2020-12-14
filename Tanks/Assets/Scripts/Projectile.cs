@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour {
-    void Start() {
+    private void Start() {
     }
 
-    void Update() {
+    private void Update() {
         if (Input.GetKeyDown(KeyCode.X)) {
             transform.position = new Vector3(0, .25f, -2f);
             transform.rotation = new Quaternion(0, 0, 0, 0);
