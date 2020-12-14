@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour {
-    private void Start() {
-    }
+    [SerializeField] private Rigidbody rigidbody;
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.X)) {
-            transform.position = new Vector3(0, .25f, -2f);
-            transform.rotation = new Quaternion(0, 0, 0, 0);
-            Rigidbody rigidbody = GetComponent<Rigidbody>();
-            rigidbody.velocity = transform.forward * 10f;
-        }
+    public void Launch(Transform muzzle, Material material) {
+        transform.position = muzzle.position;
+        transform.rotation = muzzle.rotation;
+        rigidbody.velocity = transform.forward * 10f;
+        transform.GetComponent<MeshRenderer>().material = material;
     }
 }

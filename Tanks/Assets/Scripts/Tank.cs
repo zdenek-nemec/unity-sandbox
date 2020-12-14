@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Tank : MonoBehaviour {
     [SerializeField] private Material playerMaterial;
+    [SerializeField] private Projectile projectilePrefab;
     private bool controls = false;
     private int speedMultiplier = 1;
 
     public void AssumeControl() {
         controls = true;
         foreach (Transform child in transform) {
-            Debug.Log("Tank.AssumeControl: Child");
-            child.GetComponent<MeshRenderer>().material = playerMaterial;
+            if (!child.name.Equals("Muzzle")) {
+                child.GetComponent<MeshRenderer>().material = playerMaterial;
+            }
         }
     }
 
@@ -44,6 +46,20 @@ public class Tank : MonoBehaviour {
             speedMultiplier = 2;
         } else if (Input.GetKeyUp(KeyCode.LeftShift)) {
             speedMultiplier = 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Fire();
+        }
+    }
+
+    private void Fire() {
+        var projectile = Instantiate(projectilePrefab);
+        foreach (Transform child in transform) {
+            if (child.name.Equals("Muzzle")) {
+                projectile.Launch(child, playerMaterial);
+                break;
+            }
         }
     }
 }

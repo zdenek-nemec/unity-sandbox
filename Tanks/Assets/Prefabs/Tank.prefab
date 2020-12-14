@@ -218,6 +218,7 @@ Transform:
   m_Children:
   - {fileID: 5389619102137903121}
   - {fileID: 7908604167127304759}
+  - {fileID: 7761494516823497502}
   - {fileID: 5389619102577685974}
   - {fileID: 5389619102625827714}
   m_Father: {fileID: 0}
@@ -252,6 +253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMaterial: {fileID: 2100000, guid: 5beacfd7f2bf7ae4c92824e4d068ac14, type: 2}
+  projectilePrefab: {fileID: 4658122767718019864, guid: 9d2d038314eb0034ca2bc12d49d67641,
+    type: 3}
 --- !u!1 &5389619102577685975
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +286,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.1, z: 0.8}
   m_Children: []
   m_Father: {fileID: 5389619102166635174}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5389619102577685979
 MeshFilter:
@@ -376,7 +379,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.1, z: 0.8}
   m_Children: []
   m_Father: {fileID: 5389619102166635174}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5389619102625827719
 MeshFilter:
@@ -438,3 +441,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &6699882617093597605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7761494516823497502}
+  m_Layer: 0
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7761494516823497502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6699882617093597605}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5389619102166635174}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
