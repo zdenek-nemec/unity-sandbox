@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Tank : MonoBehaviour {
+    private int speedMultiplier = 1;
+
     void Update() {
         Rigidbody rigidbody = GetComponent<Rigidbody>();
 
         if (Input.GetKey(KeyCode.W)) {
-            rigidbody.velocity = transform.right * -3f;
+            rigidbody.velocity = transform.right * -3f * speedMultiplier;
         }
         if (Input.GetKey(KeyCode.S)) {
             rigidbody.velocity = transform.right * 3f;
@@ -18,6 +20,12 @@ public class Tank : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.D)) {
             transform.Rotate(0, 1f, 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+            speedMultiplier = 2;
+        } else if (Input.GetKeyUp(KeyCode.LeftShift)) {
+            speedMultiplier = 1;
         }
     }
 }
