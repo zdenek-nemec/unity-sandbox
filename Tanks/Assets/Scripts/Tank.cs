@@ -7,6 +7,8 @@ public class Tank : MonoBehaviour {
     private Material material = null;
     private bool controlsWasd = false;
     private bool controlsArrows = false;
+    private bool controlsNumeric = false;
+    private bool controlsIjkl = false;
     private int speedMultiplier = 1;
 
     public void AssumeControl(string controls, Material material) {
@@ -14,6 +16,10 @@ public class Tank : MonoBehaviour {
             controlsWasd = true;
         } else if (controls == "Arrows") {
             controlsArrows = true;
+        } else if (controls == "Numeric") {
+            controlsNumeric = true;
+        } else if (controls == "IJKL") {
+            controlsIjkl = true;
         }
 
         this.material = material;
@@ -74,6 +80,54 @@ public class Tank : MonoBehaviour {
             }
 
             if (Input.GetKeyDown(KeyCode.RightControl)) {
+                Fire();
+            }
+        } else if (controlsNumeric) {
+            if (Input.GetKey(KeyCode.Keypad8)) {
+                rigidbody.velocity = transform.forward * 3f * speedMultiplier;
+            }
+            if (Input.GetKey(KeyCode.Keypad5)) {
+                rigidbody.velocity = transform.forward * -3f;
+            }
+
+            if (Input.GetKey(KeyCode.Keypad4)) {
+                transform.Rotate(0, -1f, 0);
+            }
+            if (Input.GetKey(KeyCode.Keypad6)) {
+                transform.Rotate(0, 1f, 0);
+            }
+
+            if (Input.GetKeyDown(KeyCode.KeypadPlus)) {
+                speedMultiplier = 2;
+            } else if (Input.GetKeyUp(KeyCode.KeypadPlus)) {
+                speedMultiplier = 1;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Keypad0)) {
+                Fire();
+            }
+        } else if (controlsIjkl) {
+            if (Input.GetKey(KeyCode.I)) {
+                rigidbody.velocity = transform.forward * 3f * speedMultiplier;
+            }
+            if (Input.GetKey(KeyCode.K)) {
+                rigidbody.velocity = transform.forward * -3f;
+            }
+
+            if (Input.GetKey(KeyCode.J)) {
+                transform.Rotate(0, -1f, 0);
+            }
+            if (Input.GetKey(KeyCode.L)) {
+                transform.Rotate(0, 1f, 0);
+            }
+
+            if (Input.GetKeyDown(KeyCode.H)) {
+                speedMultiplier = 2;
+            } else if (Input.GetKeyUp(KeyCode.H)) {
+                speedMultiplier = 1;
+            }
+
+            if (Input.GetKeyDown(KeyCode.N)) {
                 Fire();
             }
         }

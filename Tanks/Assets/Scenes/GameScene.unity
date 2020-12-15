@@ -439,6 +439,8 @@ MonoBehaviour:
     type: 3}
   player1Material: {fileID: 2100000, guid: 5beacfd7f2bf7ae4c92824e4d068ac14, type: 2}
   player2Material: {fileID: 2100000, guid: ede7540f86394714ab29b9a54d007d1f, type: 2}
+  player3Material: {fileID: 2100000, guid: 417c2d981214e0a42a92a3f723b37bf5, type: 2}
+  player4Material: {fileID: 2100000, guid: 394550ebb401b0e499bbef4498017648, type: 2}
 --- !u!4 &1822915782
 Transform:
   m_ObjectHideFlags: 0
