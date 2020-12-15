@@ -437,6 +437,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tankPrefab: {fileID: 4536920044813695766, guid: 845f85ffebc856340b117af70c9565b8,
     type: 3}
+  player1Material: {fileID: 2100000, guid: 5beacfd7f2bf7ae4c92824e4d068ac14, type: 2}
+  player2Material: {fileID: 2100000, guid: ede7540f86394714ab29b9a54d007d1f, type: 2}
 --- !u!4 &1822915782
 Transform:
   m_ObjectHideFlags: 0
